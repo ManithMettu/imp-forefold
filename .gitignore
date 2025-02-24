@@ -1,6 +1,9 @@
-.DS_Store
 /node_modules/
-
-# React Router
 /.react-router/
 /build/
+/logs/
+.env
+*.log
+*.local
+pnpm-debug.log*
+.DS_Store

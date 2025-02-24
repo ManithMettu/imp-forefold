@@ -1,6 +1,4 @@
 {
-  "name": "payments360.forefoldai.com",
-  "private": true,
   "type": "module",
   "scripts": {
     "build": "react-router build",
