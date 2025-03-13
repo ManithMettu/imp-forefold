@@ -1,9 +1,17 @@
 import { Building, ChevronRight, Menu, X } from "lucide-react";
 import { useState } from "react";
+import ScrollSpy from "react-scrollspy-navigation";
+import { cn } from "~/lib/utils";
 
+// TODO: Remove ScrollSpy and implement active section properly.
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const links = [
+    { title: "Home", href: "#home" },
+    { title: "Solutions", href: "#solutions" },
+    { title: "Pricing", href: "#pricing" },
+  ];
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen);
@@ -20,34 +28,24 @@ export default function Header() {
         </span>
       </div>
 
-      <nav className="hidden md:flex items-center justify-center space-x-1">
-        <a
-          href="#home"
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-            activeSection === "home"
-              ? "bg-blue-50 text-blue-600"
-              : "text-gray-600 hover:bg-gray-100"
-          }`}
-        >
-          Home
-        </a>
-        <a
-          href="#products"
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-            activeSection === "products"
-              ? "bg-blue-50 text-blue-600"
-              : "text-gray-600 hover:bg-gray-100"
-          }`}
-        >
-          Solutions
-        </a>
-        <a
-          href="#"
-          className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-100 transition-all duration-300"
-        >
-          Pricing
-        </a>
-      </nav>
+      <ScrollSpy onChangeActiveId={(currentId) => setActiveSection(currentId)}>
+        <nav className="hidden md:flex items-center justify-center space-x-1">
+          {links.map(({ title, href }, index) => (
+            <a
+              href={href}
+              key={index}
+              className={cn(
+                "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
+                "#" + activeSection === href
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-600 hover:bg-gray-100"
+              )}
+            >
+              {title}
+            </a>
+          ))}
+        </nav>
+      </ScrollSpy>
 
       <div className="hidden md:flex items-center space-x-3">
         <button className="px-4 py-2 rounded-lg text-sm font-medium border border-gray-200 hover:bg-gray-100 transition-all duration-300">
@@ -68,11 +66,11 @@ export default function Header() {
         <Menu size={24} className="text-gray-600" />
       </button>
 
-      {/* Mobile sliding menu */}
       <div
-        className={`fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl z-50 transform ${
+        className={cn(
+          "fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden",
           isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } transition-transform duration-300 ease-in-out md:hidden`}
+        )}
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex justify-between items-center mb-8">
@@ -93,30 +91,17 @@ export default function Header() {
           </div>
 
           <nav className="flex flex-col space-y-1 mb-8">
-            <a
-              href="#home"
-              onClick={toggleMenu}
-              className="flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
-            >
-              Home
-              <ChevronRight size={18} className="text-gray-400" />
-            </a>
-            <a
-              href="#products"
-              onClick={toggleMenu}
-              className="flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
-            >
-              Solutions
-              <ChevronRight size={18} className="text-gray-400" />
-            </a>
-            <a
-              href="#"
-              onClick={toggleMenu}
-              className="flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
-            >
-              Pricing
-              <ChevronRight size={18} className="text-gray-400" />
-            </a>
+            {links.map(({ title, href }, index) => (
+              <a
+                href={href}
+                key={index}
+                onClick={toggleMenu}
+                className="flex items-center justify-between px-4 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-gray-100 transition-all duration-300"
+              >
+                {title}
+                <ChevronRight size={18} className="text-gray-400" />
+              </a>
+            ))}
           </nav>
 
           <div className="flex flex-col space-y-3 mt-auto">
@@ -136,7 +121,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Background overlay for mobile menu */}
       {isMenuOpen && (
         <div
           onClick={toggleMenu}

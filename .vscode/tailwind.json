@@ -63,11 +63,31 @@
     },
     {
       "name": "@reference",
-      "description": "Use the @reference directive to import your main stylesheet when applying theme variables, custom utilities, and custom variants via @apply or @variant in a component's <style> block or CSS modules, as this makes those values available without duplicating CSS output.",
+      "description": "Use the `@reference` directive to import your main stylesheet when applying theme variables, custom utilities, and custom variants via @apply or @variant in a component's <style> block or CSS modules, as this makes those values available without duplicating CSS output.",
       "references": [
         {
           "name": "Tailwind Documentation",
           "url": "https://tailwindcss.com/docs/functions-and-directives#reference-directive"
+        }
+      ]
+    },
+    {
+      "name": "@config",
+      "description": "Use the `@config` directive to load a legacy JavaScript-based configuration file.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#config-directive"
+        }
+      ]
+    },
+    {
+      "name": "@plugin",
+      "description": "Use the `@plugin` directive to load a legacy JavaScript-based plugin.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#plugin-directive"
         }
       ]
     }

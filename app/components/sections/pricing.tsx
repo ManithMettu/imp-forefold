@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { useState } from "react";
+import { cn } from "~/lib/utils";
 
 export default function Pricing() {
   const [selectedPlan, setSelectedPlan] = useState("monthly");
@@ -72,12 +73,12 @@ export default function Pricing() {
             or surprises.
           </p>
 
-          {/* Pricing Toggle */}
           <div className="flex items-center justify-center mt-8">
             <span
-              className={`text-sm font-medium mr-3 ${
+              className={cn(
+                "text-sm font-medium mr-3",
                 selectedPlan === "monthly" ? "text-blue-600" : "text-gray-500"
-              }`}
+              )}
             >
               Monthly
             </span>
@@ -90,17 +91,19 @@ export default function Pricing() {
               className="relative rounded-full w-14 h-7 bg-blue-100 flex items-center transition duration-300 focus:outline-none"
             >
               <span
-                className={`w-5 h-5 rounded-full bg-blue-600 shadow-md transform transition-transform duration-300 ${
+                className={cn(
+                  "w-5 h-5 rounded-full bg-blue-600 shadow-md transform transition-transform duration-300",
                   selectedPlan === "yearly" ? "translate-x-8" : "translate-x-1"
-                }`}
+                )}
               />
             </button>
             <span
-              className={`text-sm font-medium ml-3 ${
+              className={cn(
+                "text-sm font-medium ml-3",
                 selectedPlan === "yearly" ? "text-blue-600" : "text-gray-500"
-              }`}
+              )}
             >
-              Yearly{" "}
+              Yearly&nbsp;
               <span className="text-xs text-green-500 font-medium">
                 (Save 20%)
               </span>
@@ -112,11 +115,12 @@ export default function Pricing() {
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
-              className={`rounded-2xl overflow-hidden transition-all duration-300 ${
+              className={cn(
+                "rounded-2xl overflow-hidden transition-all duration-300",
                 plan.highlighted
                   ? "shadow-xl border-2 border-blue-500 transform hover:-translate-y-2"
                   : "shadow-lg border border-gray-200 hover:shadow-xl transform hover:-translate-y-1"
-              }`}
+              )}
             >
               {plan.highlighted && (
                 <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-2 text-sm font-medium">
@@ -151,7 +155,10 @@ export default function Pricing() {
                 </ul>
 
                 <button
-                  className={`w-full py-3 rounded-lg text-base font-medium transition-all duration-300 ${plan.ctaColor}`}
+                  className={cn(
+                    "w-full py-3 rounded-lg text-base font-medium transition-all duration-300",
+                    plan.ctaColor
+                  )}
                 >
                   {plan.cta}
                 </button>

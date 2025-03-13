@@ -5,6 +5,7 @@ import {
   Home,
   Users,
 } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 export default function Features() {
   const modules = [
@@ -51,7 +52,7 @@ export default function Features() {
   ];
 
   return (
-    <section id="products" className="py-20 bg-gray-100 reveal-element">
+    <section id="solutions" className="py-20 bg-gray-100 reveal-element">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 reveal-element">
@@ -71,10 +72,16 @@ export default function Features() {
             >
               <div className="overflow-hidden">
                 <div
-                  className={`w-full h-48 bg-gradient-to-br ${feature.cardGradient} flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500`}
+                  className={cn(
+                    "w-full h-48 bg-gradient-to-br flex items-center justify-center p-6 group-hover:scale-105 transition-transform duration-500",
+                    feature.cardGradient
+                  )}
                 >
                   <div
-                    className={`w-20 h-20 bg-gradient-to-br ${feature.iconGradient} rounded-2xl shadow-lg flex items-center justify-center text-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500`}
+                    className={cn(
+                      "w-20 h-20 bg-gradient-to-br rounded-2xl shadow-lg flex items-center justify-center text-white transform rotate-12 group-hover:rotate-0 group-hover:scale-110 transition-all duration-500",
+                      feature.iconGradient
+                    )}
                   >
                     <feature.icon size={36} className="text-white" />
                   </div>
@@ -83,7 +90,10 @@ export default function Features() {
               <div className="p-6 md:p-8">
                 <h3 className="text-xl md:text-2xl font-bold mb-4 flex items-center reveal-element">
                   <span
-                    className={`bg-clip-text text-transparent bg-gradient-to-r ${feature.iconGradient}`}
+                    className={cn(
+                      "bg-clip-text text-transparent bg-gradient-to-r",
+                      feature.iconGradient
+                    )}
                   >
                     {feature.title}
                   </span>
@@ -103,7 +113,10 @@ export default function Features() {
                 </div>
                 <a
                   href="#"
-                  className={`inline-flex items-center font-medium transition-colors duration-300 ${feature.linkColor}`}
+                  className={cn(
+                    "inline-flex items-center font-medium transition-colors duration-300",
+                    feature.linkColor
+                  )}
                 >
                   Learn more
                   <ChevronRight size={16} className="ml-1" />

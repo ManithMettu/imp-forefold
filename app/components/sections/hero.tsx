@@ -1,3 +1,5 @@
+import { cn } from "~/lib/utils";
+
 export default function Hero() {
   const stats = [
     {
@@ -54,7 +56,6 @@ export default function Hero() {
             <div className="relative bg-gradient-to-br from-blue-100 to-indigo-100 p-4 rounded-2xl shadow-xl">
               <div className="aspect-[4/3] rounded-lg overflow-hidden bg-white shadow-lg">
                 <div className="w-full h-full bg-gradient-to-br from-blue-500/10 to-indigo-500/10 flex items-center justify-center p-6">
-                  {/* Dashboard mockup */}
                   <div className="w-full max-w-md bg-white rounded-lg overflow-hidden shadow-lg">
                     <div className="h-12 bg-blue-500 flex items-center px-4">
                       <div className="flex space-x-2">
@@ -103,7 +104,6 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Decorative elements */}
               <div className="absolute -top-6 -right-6 w-12 h-12 bg-yellow-500 rounded-lg shadow-lg transform rotate-12"></div>
               <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-blue-500 rounded-full shadow-lg"></div>
               <div className="absolute top-1/2 -right-2 w-4 h-12 bg-indigo-500 rounded-full shadow-lg transform -translate-y-1/2"></div>
@@ -117,7 +117,9 @@ export default function Hero() {
               key={index}
               className="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <p className={`text-4xl font-bold ${stat.color}`}>{stat.value}</p>
+              <p className={cn("text-4xl font-bold", stat.color)}>
+                {stat.value}
+              </p>
               <p className="text-sm text-gray-600 mt-2">{stat.label}</p>
             </div>
           ))}

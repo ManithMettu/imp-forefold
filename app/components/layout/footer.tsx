@@ -98,8 +98,9 @@ export default function Footer() {
           </div>
 
           <div className="flex space-x-5 mb-4 md:mb-0">
-            {socials.map((social) => (
+            {socials.map((social, index) => (
               <a
+                key={index}
                 href={social.href}
                 className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
               >
