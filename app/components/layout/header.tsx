@@ -38,7 +38,7 @@ export default function Header() {
                 "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300",
                 "#" + activeSection === href
                   ? "bg-blue-50 text-blue-600"
-                  : "text-gray-600 hover:bg-gray-100"
+                  : "text-gray-600 hover:bg-gray-100",
               )}
             >
               {title}
@@ -69,7 +69,7 @@ export default function Header() {
       <div
         className={cn(
           "fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-in-out md:hidden",
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
+          isMenuOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
         <div className="flex flex-col h-full p-6">
