@@ -2,7 +2,7 @@ import { Check } from "lucide-react";
 import { useState } from "react";
 import { cn } from "~/lib/utils";
 
-export default function Pricing() {
+export default function PricingSection() {
   const [selectedPlan, setSelectedPlan] = useState("monthly");
   const pricingPlans = [
     {
@@ -77,7 +77,7 @@ export default function Pricing() {
             <span
               className={cn(
                 "text-sm font-medium mr-3",
-                selectedPlan === "monthly" ? "text-blue-600" : "text-gray-500",
+                selectedPlan === "monthly" ? "text-blue-600" : "text-gray-500"
               )}
             >
               Monthly
@@ -85,7 +85,7 @@ export default function Pricing() {
             <button
               onClick={() =>
                 setSelectedPlan(
-                  selectedPlan === "monthly" ? "yearly" : "monthly",
+                  selectedPlan === "monthly" ? "yearly" : "monthly"
                 )
               }
               className="relative rounded-full w-14 h-7 bg-blue-100 flex items-center transition duration-300 focus:outline-none"
@@ -93,14 +93,14 @@ export default function Pricing() {
               <span
                 className={cn(
                   "w-5 h-5 rounded-full bg-blue-600 shadow-md transform transition-transform duration-300",
-                  selectedPlan === "yearly" ? "translate-x-8" : "translate-x-1",
+                  selectedPlan === "yearly" ? "translate-x-8" : "translate-x-1"
                 )}
               />
             </button>
             <span
               className={cn(
                 "text-sm font-medium ml-3",
-                selectedPlan === "yearly" ? "text-blue-600" : "text-gray-500",
+                selectedPlan === "yearly" ? "text-blue-600" : "text-gray-500"
               )}
             >
               Yearly&nbsp;
@@ -119,7 +119,7 @@ export default function Pricing() {
                 "rounded-2xl overflow-hidden transition-all duration-300",
                 plan.highlighted
                   ? "shadow-xl border-2 border-blue-500 transform hover:-translate-y-2"
-                  : "shadow-lg border border-gray-200 hover:shadow-xl transform hover:-translate-y-1",
+                  : "shadow-lg border border-gray-200 hover:shadow-xl transform hover:-translate-y-1"
               )}
             >
               {plan.highlighted && (
@@ -157,7 +157,7 @@ export default function Pricing() {
                 <button
                   className={cn(
                     "w-full py-3 rounded-lg text-base font-medium transition-all duration-300",
-                    plan.ctaColor,
+                    plan.ctaColor
                   )}
                 >
                   {plan.cta}

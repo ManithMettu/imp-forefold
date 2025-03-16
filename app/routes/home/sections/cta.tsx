@@ -1,6 +1,6 @@
-export default function CTA() {
+export default function CtaSection() {
   return (
-    <section className="py-20 bg-gray-100">
+    <section id="cta" className="py-20 bg-gray-100">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-3xl overflow-hidden shadow-xl">
           <div className="px-6 py-12 md:p-12 lg:p-16 relative">

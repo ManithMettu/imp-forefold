@@ -1,21 +1,6 @@
 import { Building, Github, Linkedin, Mail, Phone, Twitter } from "lucide-react";
 
 export default function Footer() {
-  const socials = [
-    {
-      icon: Twitter,
-      href: "#",
-    },
-    {
-      icon: Linkedin,
-      href: "#",
-    },
-    {
-      icon: Github,
-      href: "#",
-    },
-  ];
-
   const sections = [
     {
       title: "Company",
@@ -43,6 +28,21 @@ export default function Footer() {
         { text: "Blog", href: "#" },
         { text: "Support", href: "#" },
       ],
+    },
+  ];
+
+  const socials = [
+    {
+      icon: Twitter,
+      href: "#",
+    },
+    {
+      icon: Linkedin,
+      href: "#",
+    },
+    {
+      icon: Github,
+      href: "#",
     },
   ];
 

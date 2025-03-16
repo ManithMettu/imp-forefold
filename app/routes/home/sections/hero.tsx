@@ -1,6 +1,6 @@
 import { cn } from "~/lib/utils";
 
-export default function Hero() {
+export default function HeroSection() {
   const stats = [
     {
       value: "10M+",
@@ -25,7 +25,7 @@ export default function Hero() {
   ];
 
   return (
-    <section id="home" className="relative pt-24 pb-20 md:pt-32 md:pb-32">
+    <section id="hero" className="relative pt-24 pb-20 md:pt-32 md:pb-32">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
         <div className="flex flex-col md:flex-row md:items-center">
           <div className="w-full md:w-1/2 mb-12 md:mb-0 md:pr-12">
