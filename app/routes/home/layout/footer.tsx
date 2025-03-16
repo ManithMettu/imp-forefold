@@ -47,12 +47,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-white pt-16 pb-8 border-t border-gray-200">
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+    <footer className="border-t border-gray-200 bg-white pt-16 pb-8">
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <div className="mb-12 grid grid-cols-2 gap-8 md:grid-cols-4">
           {sections.map((section, index) => (
             <div key={index}>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-4">
+              <h3 className="mb-4 text-sm font-semibold tracking-wider text-gray-800 uppercase">
                 {section.title}
               </h3>
               <ul className="space-y-3">
@@ -60,7 +60,7 @@ export default function Footer() {
                   <li key={index}>
                     <a
                       href={link.href}
-                      className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                      className="text-gray-600 transition-colors duration-300 hover:text-blue-600"
                     >
                       {link.text}
                     </a>
@@ -70,16 +70,16 @@ export default function Footer() {
             </div>
           ))}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-4">
+            <h3 className="mb-4 text-sm font-semibold tracking-wider text-gray-800 uppercase">
               Contact
             </h3>
             <ul className="space-y-3">
               <li className="flex items-center">
-                <Phone size={16} className="text-blue-500 mr-2" />
+                <Phone size={16} className="mr-2 text-blue-500" />
                 <span className="text-gray-600">+1 (800) 123-4567</span>
               </li>
               <li className="flex items-center">
-                <Mail size={16} className="text-blue-500 mr-2" />
+                <Mail size={16} className="mr-2 text-blue-500" />
                 <span className="text-gray-600">contact@payments360.com</span>
               </li>
               <li className="flex items-center">
@@ -89,20 +89,20 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center mb-4 md:mb-0">
-            <div className="h-8 w-8 bg-gradient-to-br from-blue-500 to-indigo-600 mr-3 flex items-center justify-center rounded-lg">
+        <div className="flex flex-col items-center justify-between border-t border-gray-200 pt-8 md:flex-row">
+          <div className="mb-4 flex items-center md:mb-0">
+            <div className="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600">
               <Building size={16} className="text-white" />
             </div>
             <span className="font-bold">Payments360°</span>
           </div>
 
-          <div className="flex space-x-5 mb-4 md:mb-0">
+          <div className="mb-4 flex space-x-5 md:mb-0">
             {socials.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
-                className="text-gray-600 hover:text-blue-600 transition-colors duration-300"
+                className="text-gray-600 transition-colors duration-300 hover:text-blue-600"
               >
                 <social.icon size={20} />
               </a>

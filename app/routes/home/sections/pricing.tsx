@@ -62,22 +62,22 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-6 md:px-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+    <section id="pricing" className="bg-white py-20">
+      <div className="mx-auto max-w-6xl px-6 md:px-10">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-bold md:text-4xl">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg leading-relaxed text-gray-600">
             Choose the plan that's right for your business, with no hidden fees
             or surprises.
           </p>
 
-          <div className="flex items-center justify-center mt-8">
+          <div className="mt-8 flex items-center justify-center">
             <span
               className={cn(
-                "text-sm font-medium mr-3",
-                selectedPlan === "monthly" ? "text-blue-600" : "text-gray-500"
+                "mr-3 text-sm font-medium",
+                selectedPlan === "monthly" ? "text-blue-600" : "text-gray-500",
               )}
             >
               Monthly
@@ -85,51 +85,51 @@ export default function PricingSection() {
             <button
               onClick={() =>
                 setSelectedPlan(
-                  selectedPlan === "monthly" ? "yearly" : "monthly"
+                  selectedPlan === "monthly" ? "yearly" : "monthly",
                 )
               }
-              className="relative rounded-full w-14 h-7 bg-blue-100 flex items-center transition duration-300 focus:outline-none"
+              className="relative flex h-7 w-14 items-center rounded-full bg-blue-100 transition duration-300 focus:outline-none"
             >
               <span
                 className={cn(
-                  "w-5 h-5 rounded-full bg-blue-600 shadow-md transform transition-transform duration-300",
-                  selectedPlan === "yearly" ? "translate-x-8" : "translate-x-1"
+                  "h-5 w-5 transform rounded-full bg-blue-600 shadow-md transition-transform duration-300",
+                  selectedPlan === "yearly" ? "translate-x-8" : "translate-x-1",
                 )}
               />
             </button>
             <span
               className={cn(
-                "text-sm font-medium ml-3",
-                selectedPlan === "yearly" ? "text-blue-600" : "text-gray-500"
+                "ml-3 text-sm font-medium",
+                selectedPlan === "yearly" ? "text-blue-600" : "text-gray-500",
               )}
             >
               Yearly&nbsp;
-              <span className="text-xs text-green-500 font-medium">
+              <span className="text-xs font-medium text-green-500">
                 (Save 20%)
               </span>
             </span>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid gap-8 md:grid-cols-3">
           {pricingPlans.map((plan, index) => (
             <div
               key={index}
               className={cn(
-                "rounded-2xl overflow-hidden transition-all duration-300",
+                "overflow-hidden rounded-2xl transition-all duration-300",
                 plan.highlighted
-                  ? "shadow-xl border-2 border-blue-500 transform hover:-translate-y-2"
-                  : "shadow-lg border border-gray-200 hover:shadow-xl transform hover:-translate-y-1"
+                  ? "transform border-2 border-blue-500 shadow-xl hover:-translate-y-2"
+                  : "transform border border-gray-200 shadow-lg hover:-translate-y-1 hover:shadow-xl",
               )}
             >
               {plan.highlighted && (
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center py-2 text-sm font-medium">
+                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 py-2 text-center text-sm font-medium text-white">
                   Most Popular
                 </div>
               )}
-              <div className="p-6 md:p-8 bg-white">
-                <h3 className="text-xl font-bold mb-2">{plan.name}</h3>
-                <p className="text-gray-600 mb-6 h-12">{plan.description}</p>
+              <div className="bg-white p-6 md:p-8">
+                <h3 className="mb-2 text-xl font-bold">{plan.name}</h3>
+                <p className="mb-6 h-12 text-gray-600">{plan.description}</p>
                 <div className="mb-6">
                   <span className="text-4xl font-bold">
                     $
@@ -142,12 +142,12 @@ export default function PricingSection() {
                   </span>
                 </div>
 
-                <ul className="space-y-3 mb-8">
+                <ul className="mb-8 space-y-3">
                   {plan.features.map((feature, i) => (
                     <li key={i} className="flex items-start">
                       <Check
                         size={18}
-                        className="text-green-500 mr-2 flex-shrink-0 mt-0.5"
+                        className="mt-0.5 mr-2 flex-shrink-0 text-green-500"
                       />
                       <span className="text-gray-700">{feature}</span>
                     </li>
@@ -156,8 +156,8 @@ export default function PricingSection() {
 
                 <button
                   className={cn(
-                    "w-full py-3 rounded-lg text-base font-medium transition-all duration-300",
-                    plan.ctaColor
+                    "w-full rounded-lg py-3 text-base font-medium transition-all duration-300",
+                    plan.ctaColor,
                   )}
                 >
                   {plan.cta}
@@ -167,13 +167,13 @@ export default function PricingSection() {
           ))}
         </div>
 
-        <div className="mt-16 text-center p-8 bg-gray-100 rounded-2xl shadow-inner">
-          <h3 className="text-xl font-bold mb-3">Need a custom solution?</h3>
-          <p className="text-gray-600 mb-6">
+        <div className="mt-16 rounded-2xl bg-gray-100 p-8 text-center shadow-inner">
+          <h3 className="mb-3 text-xl font-bold">Need a custom solution?</h3>
+          <p className="mb-6 text-gray-600">
             We offer tailored packages for enterprise businesses with specific
             requirements.
           </p>
-          <button className="px-6 py-3 rounded-lg text-base font-medium bg-white text-gray-800 border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
+          <button className="rounded-lg border border-gray-200 bg-white px-6 py-3 text-base font-medium text-gray-800 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             Contact our Sales Team
           </button>
         </div>

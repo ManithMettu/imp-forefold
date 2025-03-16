@@ -7,7 +7,7 @@ import SolutionsSection from "./sections/solutions";
 
 export default function Home() {
   return (
-    <div className="font-sans bg-white text-gray-800">
+    <div className="bg-white font-sans text-gray-800">
       <Header />
       <HeroSection />
       <SolutionsSection />
