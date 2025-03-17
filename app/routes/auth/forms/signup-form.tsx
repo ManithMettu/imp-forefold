@@ -61,6 +61,14 @@ export default function SignupForm({ onSuccess }: Props) {
 
   return (
     <div className="mx-auto w-full max-w-xl rounded-xl bg-white p-6 shadow-md">
+      <div className="mb-7 text-center">
+        <h2 className="mb-1 text-2xl font-bold text-gray-800">
+          Create your account
+        </h2>
+        <p className="text-sm text-gray-500">
+          Fill in your business information to get started.
+        </p>
+      </div>
       <Form.Root className="space-y-5" onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <Form.Field name="business_name">
