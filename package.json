@@ -8,11 +8,14 @@
     "typecheck": "react-router typegen && tsc"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.0.1",
     "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-form": "^0.1.2",
     "@react-router/node": "^7.2.0",
     "@react-router/serve": "^7.2.0",
     "clsx": "^2.1.1",
     "isbot": "^5.1.17",
+    "ky": "^1.7.5",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

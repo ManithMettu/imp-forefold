@@ -5,7 +5,7 @@ import HeroSection from "./sections/hero";
 import PricingSection from "./sections/pricing";
 import SolutionsSection from "./sections/solutions";
 
-export default function Home() {
+export default function Index() {
   return (
     <div className="bg-white font-sans text-gray-800">
       <Header />

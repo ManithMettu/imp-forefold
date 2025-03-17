@@ -1,6 +1,7 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Building, ChevronRight, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import ScrollSpy from "react-scrollspy-navigation";
 import { cn } from "~/lib/utils";
 
@@ -11,6 +12,23 @@ export default function Header() {
     { title: "Home", href: "#hero" },
     { title: "Solutions", href: "#solutions" },
     { title: "Pricing", href: "#pricing" },
+  ];
+  const buttons = [
+    {
+      title: "Login",
+      href: "/login",
+      className: "border border-gray-200 hover:bg-gray-100",
+    },
+    {
+      title: "Request Demo",
+      href: "#",
+      className: "bg-blue-50 text-blue-600 hover:bg-blue-100",
+    },
+    {
+      title: "Sign Up",
+      href: "/signup",
+      className: "bg-gradient-to-r from-blue-500 to-indigo-600 text-white",
+    },
   ];
 
   function toggleMenu() {
@@ -48,15 +66,18 @@ export default function Header() {
       </ScrollSpy>
 
       <div className="hidden items-center space-x-3 md:flex">
-        <button className="rounded-lg border border-gray-200 px-4 py-2 text-sm font-medium transition-all duration-300 hover:bg-gray-100">
-          Login
-        </button>
-        <button className="rounded-lg bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600 transition-all duration-300 hover:bg-blue-100">
-          Request Demo
-        </button>
-        <button className="rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 text-sm font-medium text-white transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-          Sign Up
-        </button>
+        {buttons.map(({ title, href, className }, index) => (
+          <Link
+            to={href}
+            key={index}
+            className={cn(
+              "rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300",
+              className,
+            )}
+          >
+            {title}
+          </Link>
+        ))}
       </div>
 
       <Dialog.Root open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -108,15 +129,18 @@ export default function Header() {
               </nav>
 
               <div className="mt-auto flex flex-col space-y-3">
-                <button className="w-full rounded-lg border border-gray-200 px-4 py-3 text-base font-medium transition-all duration-300 hover:bg-gray-100">
-                  Login
-                </button>
-                <button className="w-full rounded-lg bg-blue-50 px-4 py-3 text-base font-medium text-blue-600 transition-all duration-300 hover:bg-blue-100">
-                  Request Demo
-                </button>
-                <button className="w-full rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-3 text-base font-medium text-white transition-all duration-300 hover:shadow-lg">
-                  Sign Up
-                </button>
+                {buttons.map(({ title, href, className }, index) => (
+                  <Link
+                    to={href}
+                    key={index}
+                    className={cn(
+                      "w-full rounded-lg px-4 py-3 text-center text-base font-medium transition-all duration-300",
+                      className,
+                    )}
+                  >
+                    {title}
+                  </Link>
+                ))}
               </div>
             </div>
           </Dialog.Content>
