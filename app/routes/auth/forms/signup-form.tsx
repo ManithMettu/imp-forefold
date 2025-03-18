@@ -70,7 +70,7 @@ export default function SignupForm({ onSuccess }: Props) {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <EmailField required />
-          <PhoneField placeholder="+1 (555) 123-4567" required />
+          <PhoneField required />
         </div>
 
         <div className="md:col-span-2">
@@ -112,7 +112,7 @@ export default function SignupForm({ onSuccess }: Props) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <PasswordField minLength={8} required />
+          <PasswordField required />
           <ConfirmPasswordField required />
         </div>
 

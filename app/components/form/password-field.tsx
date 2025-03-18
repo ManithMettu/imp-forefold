@@ -16,7 +16,7 @@ export default function PasswordField({
   label = "Password",
   required,
   disabled,
-  minLength,
+  minLength = 8,
   maxLength,
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +38,7 @@ export default function PasswordField({
               ? typeof minLength[1] === "function"
                 ? minLength[1](minLength[0])
                 : minLength[1]
-              : `Minimum ${minLength} characters`}
+              : `Min. ${minLength} characters`}
           </Form.Message>
         )}
         {maxLength !== undefined && (
@@ -47,7 +47,7 @@ export default function PasswordField({
               ? typeof maxLength[1] === "function"
                 ? maxLength[1](maxLength[0])
                 : maxLength[1]
-              : `Maximum ${maxLength} characters`}
+              : `Max. ${maxLength} characters`}
           </Form.Message>
         )}
       </div>

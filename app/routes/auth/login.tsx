@@ -1,8 +1,11 @@
 import * as Form from "@radix-ui/react-form";
 import ky from "ky";
-import { Eye, EyeOff, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import EmailField from "~/components/form/email-field";
+import PasswordField from "~/components/form/password-field";
+import PhoneField from "~/components/form/phone-field";
 import { cn } from "~/lib/utils";
 import Footer from "./layout/footer";
 import Header from "./layout/header";
@@ -16,7 +19,6 @@ type LoginResponse = {
 
 export default function Login() {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginMethod, setLoginMethod] = useState("email");
 
@@ -87,78 +89,12 @@ export default function Login() {
           </div>
 
           <Form.Root className="space-y-5" onSubmit={onSubmit}>
-            <Form.Field
-              name={loginMethod === "email" ? "email" : "phone"}
-              className="md:col-span-2"
-            >
-              <div className="flex items-baseline justify-between">
-                <Form.Label className="text-sm font-medium text-gray-700">
-                  {loginMethod === "email" ? "Email Address" : "Phone Number"}
-                </Form.Label>
-                <Form.Message
-                  className="text-xs text-red-500"
-                  match="valueMissing"
-                >
-                  Required
-                </Form.Message>
-                {loginMethod === "email" && (
-                  <Form.Message
-                    className="text-xs text-red-500"
-                    match="typeMismatch"
-                  >
-                    Invalid email
-                  </Form.Message>
-                )}
-              </div>
-              <Form.Control asChild>
-                <input
-                  type={loginMethod === "email" ? "email" : "tel"}
-                  className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
-                  placeholder={
-                    loginMethod === "email"
-                      ? "you@example.com"
-                      : "+1 (555) 123-4567"
-                  }
-                  required
-                />
-              </Form.Control>
-            </Form.Field>
-
-            <Form.Field name="password">
-              <div className="flex items-baseline justify-between">
-                <Form.Label className="text-sm font-medium text-gray-700">
-                  Password
-                </Form.Label>
-                <Form.Message
-                  className="text-xs text-red-500"
-                  match="valueMissing"
-                >
-                  Required
-                </Form.Message>
-              </div>
-              <div className="relative mt-1">
-                <Form.Control asChild>
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    className="block w-full rounded-md border border-gray-300 bg-white px-3 py-2 pr-10 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
-                    placeholder="••••••••"
-                    required
-                  />
-                </Form.Control>
-                <button
-                  type="button"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? (
-                    <EyeOff size={16} className="text-gray-400" />
-                  ) : (
-                    <Eye size={16} className="text-gray-400" />
-                  )}
-                </button>
-              </div>
-            </Form.Field>
-
+            {loginMethod === "email" ? (
+              <EmailField required />
+            ) : (
+              <PhoneField required />
+            )}
+            <PasswordField required />
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input

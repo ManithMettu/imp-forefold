@@ -23,7 +23,7 @@ export default function PhoneField({
   label = "Phone Number",
   required,
   disabled,
-  placeholder,
+  placeholder = "+1 (555) 123-4567",
   defaultValue = "+91",
 }: Props) {
   const formatter = useRef(getFormatter(defaultValue));
