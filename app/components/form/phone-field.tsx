@@ -10,6 +10,7 @@ type Props = {
   disabled?: boolean;
   placeholder?: string;
   defaultValue?: string;
+  serverError?: string;
 };
 
 function getFormatter(initialInput?: string) {
@@ -25,6 +26,7 @@ export default function PhoneField({
   disabled,
   placeholder = "+1 (555) 123-4567",
   defaultValue = "+91",
+  serverError,
 }: Props) {
   const formatter = useRef(getFormatter(defaultValue));
   const [country, setCountry] = useState(formatter.current.country);
@@ -37,7 +39,7 @@ export default function PhoneField({
   }
 
   return (
-    <Form.Field name={name}>
+    <Form.Field name={name} serverInvalid={serverError !== undefined}>
       <div className="flex items-baseline justify-between">
         <Form.Label className="text-sm font-medium text-gray-700">
           {label}
@@ -50,6 +52,11 @@ export default function PhoneField({
         <Form.Message className="text-xs text-red-500" match="typeMismatch">
           Invalid number
         </Form.Message>
+        {serverError && (
+          <Form.Message className="text-xs text-red-500">
+            {serverError}
+          </Form.Message>
+        )}
       </div>
       <div className="relative mt-1 flex items-center">
         <div className="pointer-events-none absolute left-3 flex items-center">

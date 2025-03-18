@@ -8,6 +8,7 @@ import EmailField from "~/components/form/email-field";
 import PasswordField from "~/components/form/password-field";
 import PhoneField from "~/components/form/phone-field";
 import SelectField from "~/components/form/select-field";
+import SubmitButton from "~/components/form/submit-button";
 import TextField from "~/components/form/text-field";
 
 type SignupResponse = {
@@ -116,14 +117,7 @@ export default function SignupForm({ onSuccess }: Props) {
           <ConfirmPasswordField required />
         </div>
 
-        <Form.Submit asChild>
-          <button
-            disabled={isSubmitting}
-            className="w-full rounded-md border border-transparent bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2.5 font-medium text-white shadow-sm hover:from-blue-600 hover:to-indigo-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
-          >
-            {isSubmitting ? "Creating account..." : "Create account"}
-          </button>
-        </Form.Submit>
+        <SubmitButton isSubmitting={isSubmitting} text="Create account" />
 
         <div className="text-center">
           <p className="text-sm text-gray-600">

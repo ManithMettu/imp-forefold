@@ -5,6 +5,7 @@ type Props = {
   label?: string;
   required?: boolean | string;
   disabled?: boolean;
+  serverError?: string;
 };
 
 export default function EmailField({
@@ -12,9 +13,10 @@ export default function EmailField({
   label = "Email",
   required,
   disabled,
+  serverError,
 }: Props) {
   return (
-    <Form.Field name={name}>
+    <Form.Field name={name} serverInvalid={serverError !== undefined}>
       <div className="flex items-baseline justify-between">
         <Form.Label className="text-sm font-medium text-gray-700">
           {label}
@@ -27,6 +29,11 @@ export default function EmailField({
         <Form.Message className="text-xs text-red-500" match="typeMismatch">
           Invalid email
         </Form.Message>
+        {serverError && (
+          <Form.Message className="text-xs text-red-500">
+            {serverError}
+          </Form.Message>
+        )}
       </div>
       <Form.Control asChild>
         <input
