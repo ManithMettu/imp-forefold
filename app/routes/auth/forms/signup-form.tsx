@@ -26,7 +26,7 @@ export default function SignupForm({ onSuccess }: Props) {
     delete data["confirm_password"];
     setIsSubmitting(true);
     try {
-      const response = await ky.post("/api/signup", { json: data });
+      const response = await ky.post("/api/auth/signup", { json: data });
       const result = await response.json<SignupResponse>();
       console.log(result.message);
       onSuccess(result.data.organization_id);

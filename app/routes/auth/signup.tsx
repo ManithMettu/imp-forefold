@@ -168,10 +168,10 @@ export default function Signup() {
               Your account has been successfully created and verified.
             </p>
             <Link
-              to="/dashboard"
+              to="/login"
               className="block w-full rounded-md border border-transparent bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2.5 font-medium text-white shadow-sm hover:from-blue-600 hover:to-indigo-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
             >
-              Go to Dashboard
+              Go to Login
             </Link>
           </div>
         )}
