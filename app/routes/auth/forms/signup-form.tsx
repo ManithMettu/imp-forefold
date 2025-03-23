@@ -3,13 +3,10 @@ import ky from "ky";
 import type React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
-import ConfirmPasswordField from "~/components/form/confirm-password-field";
-import EmailField from "~/components/form/email-field";
-import PasswordField from "~/components/form/password-field";
 import PhoneField from "~/components/form/phone-field";
 import SelectField from "~/components/form/select-field";
 import SubmitButton from "~/components/form/submit-button";
-import TextField from "~/components/form/text-field";
+import FormInput from "~/components/ui/form-input";
 
 type SignupResponse = {
   message: string;
@@ -55,13 +52,15 @@ export default function SignupForm({ onSuccess }: Props) {
       </div>
       <Form.Root className="space-y-5" onSubmit={onSubmit}>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <TextField
+          <FormInput
+            type="text"
             name="business_name"
             label="Business Name"
             placeholder="Your Company LLP"
             required
           />
-          <TextField
+          <FormInput
+            type="text"
             name="business_owner_full_name"
             label="Full Name"
             placeholder="John Doe"
@@ -70,7 +69,13 @@ export default function SignupForm({ onSuccess }: Props) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <EmailField required />
+          <FormInput
+            type="email"
+            name="email"
+            label="Email"
+            placeholder="you@example.com"
+            required
+          />
           <PhoneField required />
         </div>
 
@@ -109,12 +114,36 @@ export default function SignupForm({ onSuccess }: Props) {
             ]}
             required
           />
-          <TextField name="city" label="City" placeholder="New York" required />
+          <FormInput
+            type="text"
+            name="city"
+            label="City"
+            placeholder="New York"
+            required
+          />
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <PasswordField required />
-          <ConfirmPasswordField required />
+          <FormInput
+            type="password"
+            name="password"
+            label="Password"
+            placeholder="••••••••"
+            minLength={6}
+            required
+          />
+          <FormInput
+            type="password"
+            name="confirm_password"
+            label="Confirm Password"
+            placeholder="••••••••"
+            customError={[
+              (confirmPassword, formData) =>
+                formData.get("password") !== confirmPassword,
+              "Passwords mismatch",
+            ]}
+            required
+          />
         </div>
 
         <SubmitButton isSubmitting={isSubmitting} text="Create account" />

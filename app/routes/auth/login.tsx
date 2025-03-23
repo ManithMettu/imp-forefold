@@ -3,10 +3,10 @@ import ky from "ky";
 import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import EmailField from "~/components/form/email-field";
 import PasswordField from "~/components/form/password-field";
 import PhoneField from "~/components/form/phone-field";
 import SubmitButton from "~/components/form/submit-button";
+import FormInput from "~/components/ui/form-input";
 import { cn } from "~/lib/utils";
 import Footer from "./layout/footer";
 import Header from "./layout/header";
@@ -91,7 +91,13 @@ export default function Login() {
 
           <Form.Root className="space-y-5" onSubmit={onSubmit}>
             {loginMethod === "email" ? (
-              <EmailField required />
+              <FormInput
+                type="email"
+                name="email"
+                label="Email"
+                placeholder="you@example.com"
+                required
+              />
             ) : (
               <PhoneField required />
             )}

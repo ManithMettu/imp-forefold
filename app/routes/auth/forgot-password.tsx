@@ -3,11 +3,10 @@ import ky from "ky";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import ConfirmPasswordField from "~/components/form/confirm-password-field";
-import EmailField from "~/components/form/email-field";
 import PasswordField from "~/components/form/password-field";
 import PhoneField from "~/components/form/phone-field";
 import SubmitButton from "~/components/form/submit-button";
+import FormInput from "~/components/ui/form-input";
 import { cn } from "~/lib/utils";
 import OtpVerificationForm from "./forms/otp-form";
 import Footer from "./layout/footer";
@@ -165,7 +164,13 @@ export default function ForgotPassword() {
 
             <Form.Root className="space-y-5" onSubmit={onRequestReset}>
               {resetMethod === "email" ? (
-                <EmailField required />
+                <FormInput
+                  type="email"
+                  name="email"
+                  label="Email"
+                  placeholder="you@example.com"
+                  required
+                />
               ) : (
                 <PhoneField required />
               )}
@@ -228,7 +233,18 @@ export default function ForgotPassword() {
                 label="New Password"
                 required
               />
-              <ConfirmPasswordField passwordName="new_password" required />
+              <FormInput
+                type="password"
+                name="confirm_password"
+                label="Confirm Password"
+                placeholder="••••••••"
+                customError={[
+                  (confirmPassword, formData) =>
+                    formData.get("new_password") !== confirmPassword,
+                  "Passwords mismatch",
+                ]}
+                required
+              />
               <SubmitButton
                 isSubmitting={isSubmitting}
                 text="Update Password"
