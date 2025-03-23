@@ -3,10 +3,10 @@ import ky from "ky";
 import { ArrowLeft, Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router";
-import PasswordField from "~/components/form/password-field";
-import PhoneField from "~/components/form/phone-field";
-import SubmitButton from "~/components/form/submit-button";
 import FormInput from "~/components/ui/form-input";
+import FormPasswordInput from "~/components/ui/form-password-input";
+import FormPhoneInput from "~/components/ui/form-phone-input";
+import FormSubmitButton from "~/components/ui/form-submit-button";
 import { cn } from "~/lib/utils";
 import OtpVerificationForm from "./forms/otp-form";
 import Footer from "./layout/footer";
@@ -172,7 +172,7 @@ export default function ForgotPassword() {
                   required
                 />
               ) : (
-                <PhoneField required />
+                <FormPhoneInput required />
               )}
 
               <Form.Submit asChild>
@@ -228,7 +228,7 @@ export default function ForgotPassword() {
             )}
 
             <Form.Root className="space-y-5" onSubmit={onPasswordReset}>
-              <PasswordField
+              <FormPasswordInput
                 name="new_password"
                 label="New Password"
                 required
@@ -245,10 +245,9 @@ export default function ForgotPassword() {
                 ]}
                 required
               />
-              <SubmitButton
-                isSubmitting={isSubmitting}
-                text="Update Password"
-              />
+              <FormSubmitButton isSubmitting={isSubmitting} className="w-full">
+                Update Password
+              </FormSubmitButton>
             </Form.Root>
           </div>
         )}

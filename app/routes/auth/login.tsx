@@ -3,10 +3,10 @@ import ky from "ky";
 import { Mail, Phone } from "lucide-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import PasswordField from "~/components/form/password-field";
-import PhoneField from "~/components/form/phone-field";
-import SubmitButton from "~/components/form/submit-button";
 import FormInput from "~/components/ui/form-input";
+import FormPasswordInput from "~/components/ui/form-password-input";
+import FormPhoneInput from "~/components/ui/form-phone-input";
+import FormSubmitButton from "~/components/ui/form-submit-button";
 import { cn } from "~/lib/utils";
 import Footer from "./layout/footer";
 import Header from "./layout/header";
@@ -99,9 +99,9 @@ export default function Login() {
                 required
               />
             ) : (
-              <PhoneField required />
+              <FormPhoneInput required />
             )}
-            <PasswordField required />
+            <FormPasswordInput required />
             <div className="flex items-center justify-between">
               <div className="flex items-center">
                 <input
@@ -128,7 +128,9 @@ export default function Login() {
               </div>
             </div>
 
-            <SubmitButton isSubmitting={isSubmitting} text="Log in" />
+            <FormSubmitButton isSubmitting={isSubmitting} className="w-full">
+              Log in
+            </FormSubmitButton>
 
             <div className="text-center">
               <p className="text-sm text-gray-600">

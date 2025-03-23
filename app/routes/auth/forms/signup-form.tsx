@@ -3,10 +3,11 @@ import ky from "ky";
 import type React from "react";
 import { useState } from "react";
 import { Link } from "react-router";
-import PhoneField from "~/components/form/phone-field";
-import SelectField from "~/components/form/select-field";
-import SubmitButton from "~/components/form/submit-button";
 import FormInput from "~/components/ui/form-input";
+import FormPasswordInput from "~/components/ui/form-password-input";
+import FormPhoneInput from "~/components/ui/form-phone-input";
+import FormSelect from "~/components/ui/form-select";
+import FormSubmitButton from "~/components/ui/form-submit-button";
 
 type SignupResponse = {
   message: string;
@@ -76,11 +77,11 @@ export default function SignupForm({ onSuccess }: Props) {
             placeholder="you@example.com"
             required
           />
-          <PhoneField required />
+          <FormPhoneInput required />
         </div>
 
         <div className="md:col-span-2">
-          <SelectField
+          <FormSelect
             name="industry_id"
             label="Industry"
             placeholder="Select an industry"
@@ -96,7 +97,7 @@ export default function SignupForm({ onSuccess }: Props) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <SelectField
+          <FormSelect
             name="country"
             label="Country"
             placeholder="Select a country"
@@ -124,14 +125,7 @@ export default function SignupForm({ onSuccess }: Props) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-          <FormInput
-            type="password"
-            name="password"
-            label="Password"
-            placeholder="••••••••"
-            minLength={6}
-            required
-          />
+          <FormPasswordInput required />
           <FormInput
             type="password"
             name="confirm_password"
@@ -146,7 +140,9 @@ export default function SignupForm({ onSuccess }: Props) {
           />
         </div>
 
-        <SubmitButton isSubmitting={isSubmitting} text="Create account" />
+        <FormSubmitButton isSubmitting={isSubmitting} className="w-full">
+          Create account
+        </FormSubmitButton>
 
         <div className="text-center">
           <p className="text-sm text-gray-600">

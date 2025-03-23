@@ -1,5 +1,6 @@
 import * as Form from "@radix-ui/react-form";
 import { ChevronDown } from "lucide-react";
+import { cn } from "~/lib/utils";
 
 type Option = {
   value: string | number;
@@ -10,23 +11,33 @@ type Props = {
   name: string;
   label: string;
   required?: boolean | string;
-  disabled?: boolean;
+  defaultValue?: string | number;
   placeholder?: string;
   options: Option[];
-  defaultValue?: string;
-};
+  customError?: [
+    (
+      | ((value: string, formData: FormData) => boolean)
+      | ((value: string, formData: FormData) => Promise<boolean>)
+    ),
+    string,
+  ];
+  fieldErrors?: Record<string, string>;
+} & Omit<React.ComponentProps<"select">, "name" | "required" | "defaultValue">;
 
-export default function SelectField({
+export default function FormSelect({
   name,
   label,
   required,
-  disabled,
   placeholder = "Select an option",
   options,
+  customError,
+  fieldErrors,
+  className,
   defaultValue = "",
+  ...rest
 }: Props) {
   return (
-    <Form.Field name={name}>
+    <Form.Field name={name} serverInvalid={fieldErrors?.[name] !== undefined}>
       <div className="flex items-baseline justify-between">
         <Form.Label className="text-sm font-medium text-gray-700">
           {label}
@@ -36,14 +47,30 @@ export default function SelectField({
             {typeof required === "string" ? required : "Required"}
           </Form.Message>
         )}
+        {fieldErrors?.[name] && (
+          <Form.Message className="text-xs text-red-500">
+            {fieldErrors[name]}
+          </Form.Message>
+        )}
+        {customError && (
+          <Form.Message className="text-xs text-red-500" match={customError[0]}>
+            {customError[1]}
+          </Form.Message>
+        )}
       </div>
       <div className="relative mt-1">
         <Form.Control asChild>
           <select
-            className="flex w-full appearance-none items-center justify-between rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder-gray-400 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:outline-none"
+            {...rest}
             defaultValue={defaultValue}
+            className={cn(
+              "border-input dark:bg-input/30 h-9 w-full min-w-0 appearance-none rounded-md border bg-transparent px-3 py-1 pr-11 text-base shadow-xs disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+              "focus-visible:border-ring focus-visible:ring-ring/50 outline-none focus-visible:ring-[3px]",
+              "data-invalid:ring-destructive/20 dark:data-invalid:ring-destructive/40 data-invalid:border-destructive",
+              "flex transition-[color,box-shadow]",
+              className,
+            )}
             required={Boolean(required)}
-            disabled={disabled}
           >
             <option value="" hidden>
               {placeholder}
