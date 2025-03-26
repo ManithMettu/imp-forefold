@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   Axe,
   BookUser,
@@ -53,9 +52,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onMiniChange }) => {
   return (
     <>
       {/* Header */}
-      <header className="w-full bg-blue-900 shadow-md p-2 flex items-center justify-between fixed top-0 left-0 right-0 z-50 h-[50px]">
+      <header className="w-full bg-white shadow-md p-2 flex items-center justify-between fixed top-0 left-0 right-0 z-50 h-[50px]">
         <div className="flex items-center gap-4">
-          <button onClick={handleMiniToggle} className="text-white hover:text-blue-100">
+          <button onClick={handleMiniToggle} className="text-black hover:text-blue-900">
             {isMini ? <CircleChevronRight size={18} /> : <Menu size={18} />}
           </button>
           <div className="flex items-center gap-1 bg-white px-2 py-0.5 rounded-md shadow-sm">
@@ -77,24 +76,19 @@ const Sidebar: React.FC<SidebarProps> = ({ onMiniChange }) => {
         </div>
 
         {/* Centered KGRCET */}
-        <span className="text-lg font-bold text-blue-100 absolute left-1/2 -translate-x-1/2">
+        <span className="text-lg font-bold text-blue-900 absolute left-1/2 -translate-x-1/2">
           KGRCET
         </span>
 
         {/* Right side */}
         <div className="flex items-center gap-2">
-          <span className="text-sm font-semibold text-white">Welcome, Suneel</span>
+          <span className="text-sm font-semibold text-gray-500">Welcome, Suneel</span>
         </div>
       </header>
 
       {/* Sidebar */}
-      <motion.div
-        initial={false}
-        animate={{
-          width: isMini ? 60 : 200,
-          transition: { duration: 0.3, ease: "easeInOut" },
-        }}
-        className="min-h-screen h-full bg-blue-900 text-white p-3 flex flex-col shadow-lg fixed top-[50px] z-40"
+      <div
+        className={`min-h-screen h-full bg-blue-900 text-white p-3 flex flex-col shadow-lg fixed top-[50px] z-40 ${isMini ? "w-[60px]" : "w-[200px]"} transition-all duration-300 ease-in-out`}
       >
         {/* Sidebar Menu */}
         <nav className="flex flex-col space-y-1 flex-grow">
@@ -123,7 +117,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onMiniChange }) => {
           <LogOut size={18} />
           {!isMini && <span>Logout</span>}
         </Link>
-      </motion.div>
+      </div>
 
       {/* Footer */}
       <footer className="w-full bg-white shadow-md p-2 text-center text-xs text-gray-500 fixed bottom-0 left-0 right-0">
